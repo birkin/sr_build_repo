@@ -1,2 +1,4 @@
 .env
+composeexample
 data/db
+manage.py
