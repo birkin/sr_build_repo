@@ -1,24 +1,21 @@
 version: "3.9"
    
 services:
-  db:
-    image: postgres
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: git clone git@github.com:Brown-University-Library/disa_dj_project.git
+    command: python3 -m venv ../venv
+    command: source ../venv/bin/activate
+    # command: pip install pip --upgrade
+    # command: pip install -r ./PATH??
+    command: python manage.py runserver 127.0.0.1:8000
     volumes:
+      - ../db:/db
+      - ../logs:/logs
       - .:/code
     ports:
       - "8000:8000"
     environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - FOO_KEY=bar_val
     depends_on:
-      - db
+      # - db
