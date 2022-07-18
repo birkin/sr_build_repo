@@ -4,18 +4,18 @@ services:
   web:
     build: .
     command: git clone git@github.com:Brown-University-Library/disa_dj_project.git
-    command: python3 -m venv ../venv
+    command: python3 -m venv ../venv_sr_repo
     command: source ../venv/bin/activate
-    # command: pip install pip --upgrade
+    command: pip install pip --upgrade
     # command: pip install -r ./PATH??
-    command: python manage.py runserver 127.0.0.1:8000
+    # command: python manage.py runserver 127.0.0.1:8000
     volumes:
-      - ../db:/db
-      - ../logs:/logs
+      # - ../db:/db
+      # - ../logs:/logs
       - .:/code
     ports:
       - "8000:8000"
     environment:
       - FOO_KEY=bar_val
-    depends_on:
+    # depends_on:
       # - db
